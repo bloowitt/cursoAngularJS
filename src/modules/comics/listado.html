@@ -4,7 +4,11 @@
 <button class="btn btn-primary" ng-show="!!(valorFiltro)" ng-click="limpiarFiltro()">Limpiar filtro</button>
 <p class="help-block" ng-show="!!(valorFiltro)">Filtrando por {{valorFiltro}}</p>
 <ul>
-  <li ng-repeat="comic in comics | filter:valorFiltro">{{comic.title}}</li>
+  <li ng-repeat="comic in comics | filter:valorFiltro">
+    <a href="#/detalle/{{comic.uuid}}">
+      {{comic.title}}
+    </a>
+  </li>
 </ul>
 <button class="btn btn-primary" ng-disabled="curPage === 0" ng-click="prevPage()">Previa</button>
 <button class="btn btn-primary" ng-disabled="curPage === lastPage" ng-click="nextPage()">Siguiente</button>

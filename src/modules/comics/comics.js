@@ -36,6 +36,10 @@
 
   });
 
+  module.controller('DetalleComicController', function($scope, $routeParams){
+    $scope.uuid = $routeParams.uuid;
+  });
+
   module.factory('comicsService', function($http){
     return {
       pagina: function (pgNum, elemCount) {
@@ -51,6 +55,9 @@
     $routeProvider.when('/listado',{
       templateUrl: 'modules/comics/listado.html',
       controller: 'ComicsController'
+    }).when('/detalle/:uuid',{
+      templateUrl: 'modules/comics/vista.html',
+      controller: 'DetalleComicController'
     });
 
     $routeProvider.otherwise({
