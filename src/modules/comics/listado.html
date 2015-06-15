@@ -1,0 +1,14 @@
+<h1>Listado de comics</h1>
+<label>Filtrar por título</label>
+<input type="text" class="form-control" ng-model="valorFiltro" />
+<button class="btn btn-primary" ng-show="!!(valorFiltro)" ng-click="limpiarFiltro()">Limpiar filtro</button>
+<p class="help-block" ng-show="!!(valorFiltro)">Filtrando por {{valorFiltro}}</p>
+<ul>
+  <li ng-repeat="comic in comics | filter:valorFiltro">{{comic.title}}</li>
+</ul>
+<button class="btn btn-primary" ng-disabled="curPage === 0" ng-click="prevPage()">Previa</button>
+<button class="btn btn-primary" ng-disabled="curPage === lastPage" ng-click="nextPage()">Siguiente</button>
+<br />
+Página actual: {{curPage+1}} de {{lastPage+1}}
+<br />
+Mostrar: <input type="text" ng-model-options="{debounce:500}" ng-change="reloadData()" ng-model="elemCount" /> por página
